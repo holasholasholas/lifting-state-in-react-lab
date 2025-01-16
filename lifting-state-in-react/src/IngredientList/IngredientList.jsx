@@ -4,6 +4,7 @@
 
 
 const IngredientList = (props) => {
+    
     const availableIngredients = [
 
         { name: 'Kaiser Bun', color: 'saddlebrown' },
@@ -21,9 +22,17 @@ const IngredientList = (props) => {
         { name: 'Cheddar Cheese', color: '#FDE18B' },
         { name: 'Swiss Cheese', color: '#F1E1A8' },
       ];
-    
-    return <ul></ul>;
-  };
+      return (
+        <ul>
+          {availableIngredients.map(ingredient => (
+            <li key={ingredient.name} style={{ color: ingredient.color }}>
+              {ingredient.name}<button onClick={() => addToStack(event.target)}>+</button>
+            </li>
+            
+          ))}
+        </ul>
+      );
+    };
   
   export default IngredientList;
   

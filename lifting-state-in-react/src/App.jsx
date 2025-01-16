@@ -7,10 +7,13 @@ import IngredientList from './IngredientList/IngredientList';
 const App = () => {
 
   
-const [stack, useStack] = useState();
-const [selection, useSelection] = useState();
+const [stack, setStack] = useState();
+const [selection, setSelection] = useState([]);
 
-
+const addToStack = (ingredient) => {
+  setStack([...stack, ingredient]); // Adds to end of stack
+  setSelection(ingredient); // Updates current selection
+};
 
   return (
     <main>
