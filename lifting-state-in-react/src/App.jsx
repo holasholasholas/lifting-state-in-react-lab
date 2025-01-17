@@ -1,27 +1,51 @@
 // src/App.jsx
 
+import { useState } from 'react';
 import './App.css';
 import BurgerStack from './BurgerStack/BurgerStack';
 import IngredientList from './IngredientList/IngredientList';
 
 const App = () => {
 
+  const availableIngredients = [
+    { name: 'Kaiser Bun', color: 'saddlebrown' },
+    { name: 'Sesame Bun', color: 'sandybrown' },
+    { name: 'Gluten Free Bun', color: 'peru' },
+    { name: 'Lettuce Wrap', color: 'olivedrab' },
+    { name: 'Beef Patty', color: '#3F250B' },
+    { name: 'Soy Patty', color: '#3F250B' },
+    { name: 'Black Bean Patty', color: '#3F250B' },
+    { name: 'Chicken Patty', color: 'burlywood' },
+    { name: 'Lettuce', color: 'lawngreen' },
+    { name: 'Tomato', color: 'tomato' },
+    { name: 'Bacon', color: 'maroon' },
+    { name: 'Onion', color: 'lightyellow' },
+    { name: 'Cheddar Cheese', color: '#FDE18B' },
+    { name: 'Swiss Cheese', color: '#F1E1A8' },
+  ];
+
+
+
+const [stack,setStack] = useState([]);
+
+// updates state when ingredient is added
+const addToBurger = (ingredient) => {
+  setStack([ingredient, ...stack])
+
+}
+
+const removeFromBurger = () => {
   
-const [stack, setStack] = useState();
-const [selection, setSelection] = useState([]);
+}
 
-const addToStack = (ingredient) => {
-  setStack([...stack, ingredient]); // Adds to end of stack
-  setSelection(ingredient); // Updates current selection
-};
-
+//recieves props from ingredients
   return (
     <main>
       <h1>Burger Stacker</h1>
       <section>
-      <IngredientList />
+      <IngredientList availableIngredients={availableIngredients} addToBurger={addToBurger} />
       <BurgerStack />
-      
+      <button>+</button>
       </section>
     </main>
   );
