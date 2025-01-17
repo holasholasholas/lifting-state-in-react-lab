@@ -28,14 +28,15 @@ const App = () => {
 
 const [stack,setStack] = useState([]);
 
-// updates state when ingredient is added
+// updates to state when ingredient is added
 const addToBurger = (ingredient) => {
   setStack([ingredient, ...stack])
 
 }
 
-const removeFromBurger = () => {
-  
+// from item from left stack 
+const removeFromBurger = (item, index) => {
+  setStack(stack.filter((item, i) => i !== index))
 }
 
 //recieves props from ingredients
@@ -44,8 +45,9 @@ const removeFromBurger = () => {
       <h1>Burger Stacker</h1>
       <section>
       <IngredientList availableIngredients={availableIngredients} addToBurger={addToBurger} />
-      <BurgerStack />
-      <button>+</button>
+      <BurgerStack stack={stack} removeFromBurger={removeFromBurger} />
+      
+      
       </section>
     </main>
   );
